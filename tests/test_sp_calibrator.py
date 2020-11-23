@@ -51,11 +51,14 @@ class MyUnitTest(unittest.TestCase):
                                               lambda_max, lambda_min_ratio, num_alpha,
                                               alpha_max, alpha_min_ratio)
 
-        # best_B_SPOplus, best_lambda_SPOplus, _ = sp_calibrator_instance.calibrate("SPO_plus")
-        best_B_LSE, best_lambda_LSE, _ = sp_calibrator_instance.calibrate("LSE")
-        # best_B_SPOplus_LSE, best_lambda_SPOplus_LSE, best_alpha_SPOplus_LSE = sp_calibrator_instance.calibrate("SPO_plus_LSE")
+        best_B_SPOplus, best_lambda_SPOplus, _, best_loss_SPOplus, avg_gap_SPOplus, num_of_inf_or_unbd_SPOplus = sp_calibrator_instance.calibrate(
+            "SPO_plus")
+        best_B_LSE, best_lambda_LSE, _, best_loss_LSE, avg_gap_LSE, num_of_inf_or_unbd_LSE = sp_calibrator_instance.calibrate(
+            "LSE")
+        best_B_SPOplus_LSE, best_lambda_SPOplus_LSE, best_alpha_SPOplus_LSE, best_loss_SPOplus_LSE, avg_gap_SPOplus_LSE, num_of_inf_or_unbd_SPOplus_LSE = sp_calibrator_instance.calibrate(
+            "SPO_plus_LSE")
 
-        print(best_lambda_LSE)
+        # print(best_lambda_LSE)
 
 
 if __name__ == '__main__':

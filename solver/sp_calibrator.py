@@ -54,32 +54,44 @@ class SpCalibrator:
         self.alpha_sequence = self.lambda_sequence
 
     def calibrate(self, method):
-        best_B = None
-        best_lambda = None
+        '''
+
+        :param method: Name of the approach we want to calibrate
+        :return: Matrix B corresponding to the lambda and alpha with the lowest loss on calibration set
+                The best lambda and alpha
+                The average optimality gap for instances we solve per values of lambda and alpha
+                number of instances that got infeasible or unbounded
+        '''
         best_alpha = None
         if method == "LSE":
-            best_B, best_lambda = self.calibrate_LSE()
+            best_B, best_lambda, best_loss, avg_gap, num_of_inf_or_unbd = self.calibrate_LSE()
         elif method == "SPO_plus":
-            best_B, best_lambda = self.calibrate_SPO_plus()
+            best_B, best_lambda, best_loss, avg_gap, num_of_inf_or_unbd = self.calibrate_SPO_plus()
         elif method == "SPO_plus_LSE":
-            best_B, best_lambda, best_alpha = self.calibrate_SPO_plus_LSE()
+            best_B, best_lambda, best_alpha, best_loss, avg_gap, num_of_inf_or_unbd = self.calibrate_SPO_plus_LSE()
         else:
             raise Exception("Wrong method name")
 
-        return best_B, best_lambda, best_alpha
+        return best_B, best_lambda, best_alpha, best_loss, avg_gap, num_of_inf_or_unbd
 
     def calibrate_LSE(self):
         best_B = None
         best_lambda = None
         best_loss = np.PINF
+        sum_gap = 0
+        num_of_inf_or_unbd = 0
+        num_of_feasible = 0
         for lambda_cur in self.lambda_sequence:
             sp_least_square_instance = SpLeastSquare(self.x_train, self.c_train, self.oracle, self.regularization,
                                                      lambda_cur, self.time_limit)
             sol_dict = sp_least_square_instance.solve_model()
             if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
-                pass
+                num_of_inf_or_unbd += 1
+
             else:
                 B_new = sol_dict['B_ast']
+                sum_gap += sol_dict['gap']
+                num_of_feasible += 1
                 if self.loss_metric == "SPO_loss":
                     spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
                     if spo_loss_value < best_loss:
@@ -87,20 +99,25 @@ class SpCalibrator:
                         best_B = B_new
                         best_lambda = lambda_cur
 
-        return best_B, best_lambda
+        return best_B, best_lambda, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd
 
     def calibrate_SPO_plus(self):
         best_B = None
         best_lambda = None
         best_loss = np.PINF
+        sum_gap = 0
+        num_of_inf_or_unbd = 0
+        num_of_feasible = 0
         for lambda_cur in self.lambda_sequence:
             sp_reformulation_instance = SpReformulation(self.x_train, self.c_train, self.oracle, self.regularization,
                                                         lambda_cur, 0, self.time_limit)  # alpha = 0
             sol_dict = sp_reformulation_instance.solve_model()
             if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
-                pass
+                num_of_inf_or_unbd += 1
             else:
                 B_new = sol_dict['B_ast']
+                sum_gap += sol_dict['gap']
+                num_of_feasible += 1
                 if self.loss_metric == "SPO_loss":
                     spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
                     if spo_loss_value < best_loss:
@@ -108,7 +125,7 @@ class SpCalibrator:
                         best_B = B_new
                         best_lambda = lambda_cur
 
-        return best_B, best_lambda
+        return best_B, best_lambda, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd
 
     def calibrate_SPO_plus_LSE(self):
         '''
@@ -117,18 +134,23 @@ class SpCalibrator:
 
         :return: best_B, best_lambda, best_alpha
         '''
-        _, best_lambda = self.calibrate_SPO_plus()
+        _, best_lambda, _, _, _ = self.calibrate_SPO_plus()
         best_B = None
         best_alpha = None
         best_loss = np.PINF
+        sum_gap = 0
+        num_of_inf_or_unbd = 0
+        num_of_feasible = 0
         for alpha_cur in self.alpha_sequence:
             sp_reformulation_instance = SpReformulation(self.x_train, self.c_train, self.oracle, self.regularization,
                                                         best_lambda, alpha_cur, self.time_limit)
             sol_dict = sp_reformulation_instance.solve_model()
             if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
-                pass
+                num_of_inf_or_unbd += 1
             else:
                 B_new = sol_dict['B_ast']
+                sum_gap += sol_dict['gap']
+                num_of_feasible += 1
                 if self.loss_metric == "SPO_loss":
                     spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
                     if spo_loss_value < best_loss:
@@ -136,4 +158,4 @@ class SpCalibrator:
                         best_B = B_new
                         best_alpha = alpha_cur
 
-        return best_B, best_lambda, best_alpha
+        return best_B, best_lambda, best_alpha, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd

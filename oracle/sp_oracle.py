@@ -18,7 +18,7 @@ import numpy as np
 
 
 class SpOracle:
-    def __init__(self, incidence_matrix, start_node, end_node, small_coefficient_tolerance, time_limit):
+    def __init__(self, incidence_matrix, start_node, end_node, time_limit, small_coefficient_tolerance = 0.01):
         self.A_mat = incidence_matrix
         self.n_nodes, self.n_edges = self.A_mat.shape
         self.start_node = start_node

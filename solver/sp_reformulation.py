@@ -140,15 +140,20 @@ class SpReformulation:
         sol = dict()
         status = model.getAttr("Status")
         obj_value = None
+        gap = 100
         B_ast = np.zeros((d, p))
         if status == 2:
             status = "optimal"
+            gap = 0
             obj_value = model.getAttr("ObjVal")
             for i in range(d):
                 B_ast[i,] = [B_var[i, j].X for j in range(p)]
         elif status == 9:
             status = "timelimit reached"
             obj_value = model.getAttr("ObjVal")
+            gap = model.getAttr("MIPGap") * 100
+            if gap > 100:
+                gap = 100
             for i in range(d):
                 B_ast[i,] = [B_var[i, j].X for j in range(p)]
         elif status == 3:
@@ -161,5 +166,6 @@ class SpReformulation:
         sol['obj_value'] = obj_value
         sol['status'] = status
         sol['B_ast'] = B_ast
+        sol['gap'] = gap
 
         return sol
