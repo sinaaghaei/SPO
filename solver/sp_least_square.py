@@ -1,4 +1,4 @@
-'''
+c'''
 This module solves the empirical risk least squares problem formulated as follows
 
     Min_{B} 2norm(Bx-c)^2 + _lambda omega(B)
