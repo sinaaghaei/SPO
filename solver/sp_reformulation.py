@@ -127,9 +127,9 @@ class SpReformulation:
         so that the loss become \sum_i \sum_j (beta_ij * beta_ij)
         '''
         if self._alpha != 0:
-            beta_var = model.addVars(n, d, vtype=GRB.CONTINUOUS, name="beta")
+            beta_var = model.addVars(n, d, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name="beta")
             model.addConstrs(
-                (quicksum(B_var[j, k] * self.x[k, j] for k in range(p)) - self.c[j, i] == beta_var[i, j]) for i in
+                (quicksum(B_var[j, k] * self.x[k, i] for k in range(p)) - self.c[j, i] == beta_var[i, j]) for i in
                 range(n) for j in range(d))
             obj.add((self._alpha / 2) * quicksum(beta_var[i, j] * beta_var[i, j] for i in range(n) for j in range(d)))
 

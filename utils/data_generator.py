@@ -28,6 +28,7 @@ class SpDataGenerator:
         self.outer_constant = outer_constant
         self.normalize_small_threshold = normalize_small_threshold
         self.B_true = np.random.binomial(1, 0.5, (self.d, self.p))
+        # self.B_true = np.random.randn(self.d, self.p)
 
     def generate_poly_kernel_data(self, n):
         '''

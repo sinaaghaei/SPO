@@ -48,16 +48,16 @@ class SpLeastSquare:
         obj = QuadExpr(0)
 
         '''
-        The MSE loss is |Bx - c|^2 = sum_{i \in {1,..,n}} sum_{j \in {1,..,d}} [(sum_{k \in {1,...,p}}B_jk*x_ki)-c_ji]^2
+        The MSE loss is |Bx - c|^2 = sum_{i..n} sum_{j..d} [(sum_{k..p}B_jk*x_ki)-c_ji]^2
 
         we define auxiliary decision variable beta_ij = (sum_{k \in {1,...,p}}B_jk*x_ki)-c_ji
 
         so that the loss become \sum_i \sum_j (beta_ij * beta_ij)
         '''
 
-        beta_var = model.addVars(n, d, vtype=GRB.CONTINUOUS, name="beta")
+        beta_var = model.addVars(n, d, vtype=GRB.CONTINUOUS, lb=-GRB.INFINITY, name="beta")
         model.addConstrs(
-            (quicksum(B_var[j, k] * self.x[k, j] for k in range(p)) - self.c[j, i] == beta_var[i, j]) for i in
+            (quicksum(B_var[j, k] * self.x[k, i] for k in range(p)) - self.c[j, i] == beta_var[i, j]) for i in
             range(n) for j in range(d))
         obj.add(quicksum(beta_var[i, j] * beta_var[i, j] for i in range(n) for j in range(d)))
 
