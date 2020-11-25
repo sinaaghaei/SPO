@@ -127,71 +127,71 @@ class SpCalibrator:
 
         return best_B, best_lambda, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd
 
-    # def calibrate_SPO_plus_LSE(self):
-    #     '''
-    #     We first find the best lambda without including alpha regularizer in the objective by setting alpha to 0
-    #     and then given the best lambda we calibrate alpha.
-    #
-    #     :return: best_B, best_lambda, best_alpha
-    #     '''
-    #     _, best_lambda, _, _, _ = self.calibrate_SPO_plus()
-    #     best_B = None
-    #     best_alpha = None
-    #     best_loss = np.PINF
-    #     sum_gap = 0
-    #     num_of_inf_or_unbd = 0
-    #     num_of_feasible = 0
-    #     for alpha_cur in self.alpha_sequence:
-    #         sp_reformulation_instance = SpReformulation(self.x_train, self.c_train, self.oracle, self.regularization,
-    #                                                     best_lambda, alpha_cur, self.time_limit)
-    #         sol_dict = sp_reformulation_instance.solve_model()
-    #         if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
-    #             num_of_inf_or_unbd += 1
-    #         else:
-    #             B_new = sol_dict['B_ast']
-    #             sum_gap += sol_dict['gap']
-    #             num_of_feasible += 1
-    #             if self.loss_metric == "SPO_loss":
-    #                 spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
-    #                 if spo_loss_value < best_loss:
-    #                     best_loss = spo_loss_value
-    #                     best_B = B_new
-    #                     best_alpha = alpha_cur
-    #
-    #     return best_B, best_lambda, best_alpha, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd
-
-
     def calibrate_SPO_plus_LSE(self):
         '''
-        For any pair of lambda and alpha in their grid, we train the model and return a pair with the lowest spo loss on
-        the calibration set
+        We first find the best lambda without including alpha regularizer in the objective by setting alpha to 0
+        and then given the best lambda we calibrate alpha.
 
         :return: best_B, best_lambda, best_alpha
         '''
-        best_lambda = None
+        _, best_lambda, _, _, _ = self.calibrate_SPO_plus()
         best_B = None
         best_alpha = None
         best_loss = np.PINF
         sum_gap = 0
         num_of_inf_or_unbd = 0
         num_of_feasible = 0
-        for lambda_cur in self.lambda_sequence:
-            for alpha_cur in self.alpha_sequence:
-                sp_reformulation_instance = SpReformulation(self.x_train, self.c_train, self.oracle, self.regularization,
-                                                            lambda_cur, alpha_cur, self.time_limit)
-                sol_dict = sp_reformulation_instance.solve_model()
-                if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
-                    num_of_inf_or_unbd += 1
-                else:
-                    B_new = sol_dict['B_ast']
-                    sum_gap += sol_dict['gap']
-                    num_of_feasible += 1
-                    if self.loss_metric == "SPO_loss":
-                        spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
-                        if spo_loss_value < best_loss:
-                            best_loss = spo_loss_value
-                            best_B = B_new
-                            best_alpha = alpha_cur
-                            best_lambda = lambda_cur
+        for alpha_cur in self.alpha_sequence:
+            sp_reformulation_instance = SpReformulation(self.x_train, self.c_train, self.oracle, self.regularization,
+                                                        best_lambda, alpha_cur, self.time_limit)
+            sol_dict = sp_reformulation_instance.solve_model()
+            if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
+                num_of_inf_or_unbd += 1
+            else:
+                B_new = sol_dict['B_ast']
+                sum_gap += sol_dict['gap']
+                num_of_feasible += 1
+                if self.loss_metric == "SPO_loss":
+                    spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
+                    if spo_loss_value < best_loss:
+                        best_loss = spo_loss_value
+                        best_B = B_new
+                        best_alpha = alpha_cur
 
         return best_B, best_lambda, best_alpha, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd
+
+
+    # def calibrate_SPO_plus_LSE(self):
+    #     '''
+    #     For any pair of lambda and alpha in their grid, we train the model and return a pair with the lowest spo loss on
+    #     the calibration set
+    #
+    #     :return: best_B, best_lambda, best_alpha
+    #     '''
+    #     best_lambda = None
+    #     best_B = None
+    #     best_alpha = None
+    #     best_loss = np.PINF
+    #     sum_gap = 0
+    #     num_of_inf_or_unbd = 0
+    #     num_of_feasible = 0
+    #     for lambda_cur in self.lambda_sequence:
+    #         for alpha_cur in self.alpha_sequence:
+    #             sp_reformulation_instance = SpReformulation(self.x_train, self.c_train, self.oracle, self.regularization,
+    #                                                         lambda_cur, alpha_cur, self.time_limit)
+    #             sol_dict = sp_reformulation_instance.solve_model()
+    #             if sol_dict['status'] in ["infeasible", "inf_or_unbd"]:
+    #                 num_of_inf_or_unbd += 1
+    #             else:
+    #                 B_new = sol_dict['B_ast']
+    #                 sum_gap += sol_dict['gap']
+    #                 num_of_feasible += 1
+    #                 if self.loss_metric == "SPO_loss":
+    #                     spo_loss_value = spo_loss(B_new, self.x_calibration, self.c_calibration, self.oracle)
+    #                     if spo_loss_value < best_loss:
+    #                         best_loss = spo_loss_value
+    #                         best_B = B_new
+    #                         best_alpha = alpha_cur
+    #                         best_lambda = lambda_cur
+    #
+    #     return best_B, best_lambda, best_alpha, best_loss, sum_gap / num_of_feasible, num_of_inf_or_unbd

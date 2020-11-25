@@ -24,7 +24,7 @@ def main():
 
     n_train_vec = [100]
     polykernel_degree_vec = [1, 2, 4, 6, 8]
-    polykernel_noise_half_width_vec = [0, 0.5]
+    polykernel_noise_half_width_vec =[0, 0.5]
 
     grid = SpGraph(dim)
     sp_oracle = SpOracle(incidence_matrix=grid.A, start_node=0, end_node=(grid.n_nodes - 1), time_limit=time_limit)
@@ -62,7 +62,7 @@ def main():
                     new_row = pd.DataFrame([row_items], columns=list(results_dataframe.columns))
                     results_dataframe = results_dataframe.append(new_row, ignore_index=True)
 
-    results_dataframe.to_csv('./../results/sp_results_100.csv', index=False)
+    results_dataframe.to_csv('./../results/sp_results_100_v2.csv', index=False)
 
 
 if __name__ == "__main__":
