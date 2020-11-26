@@ -1,6 +1,7 @@
 import logging
 import random
 import pandas as pd
+import numpy as np
 
 from experiments.replications import SpReplication
 from utils.sp_graph import SpGraph
@@ -11,11 +12,11 @@ logging.captureWarnings(True)  # To suppress the warnings
 
 def main():
     # parameters
-    random.seed(30)
+    np.random.seed(30)
     dim = 5
     num_covariate_features = 5
     regularization = "lasso"  # "ridge lasso
-    time_limit = 120
+    time_limit = 60
     n_test = 10000
     holdout_percent = 0.25
     num_lambda = num_alpha = 10
@@ -39,7 +40,7 @@ def main():
                  "best_lambda_LSE", "best_alpha_LSE", "spo_loss_LSE", "least_square_loss_LSE", "cal_avg_gap_LSE",
                  "cal_num_of_inf_or_unbd_LSE",
                  "best_lambda_SPOplus_LSE", "best_alpha_SPOplus_LSE", "spo_loss_SPOplusLSE",
-                 "least_square_loss_SPOplusLSE", "cal_avg_gap_SPOplus_LSE", "cal_num_of_inf_or_unbd_SPOplus_LSE"])
+                 "least_square_loss_SPOplusLSE", "cal_avg_gap_SPOplus_LSE", "cal_num_of_inf_or_unbd_SPOplus_LSE","z_star_sum_test"])
 
     for n_train in n_train_vec:
         for kernel_degree in polykernel_degree_vec:
@@ -62,7 +63,7 @@ def main():
                     new_row = pd.DataFrame([row_items], columns=list(results_dataframe.columns))
                     results_dataframe = results_dataframe.append(new_row, ignore_index=True)
 
-    results_dataframe.to_csv('./../results/sp_results_100_v2.csv', index=False)
+    results_dataframe.to_csv('./../results/sp_results_100_v3.csv', index=False)
 
 
 if __name__ == "__main__":

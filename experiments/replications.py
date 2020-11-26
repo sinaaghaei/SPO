@@ -60,9 +60,11 @@ class SpReplication:
         best_B_SPOplus_LSE, best_lambda_SPOplus_LSE, best_alpha_SPOplus_LSE, _, cal_avg_gap_SPOplus_LSE, cal_num_of_inf_or_unbd_SPOplus_LSE = sp_calibrator_instance.calibrate(
             "SPO_plus_LSE")
 
-        spo_loss_SPOplus = spo_loss(best_B_SPOplus, x_test, c_test, self.oracle)
-        spo_loss_LSE = spo_loss(best_B_LSE, x_test, c_test, self.oracle)
-        spo_loss_SPOplusLSE = spo_loss(best_B_SPOplus_LSE, x_test, c_test, self.oracle)
+        z_star_test, _ = self.oracle.oracle_dataset(c_test)
+        z_star_sum_test = np.sum(z_star_test)
+        spo_loss_SPOplus = spo_loss(best_B_SPOplus, x_test, c_test, self.oracle, z_star_test)
+        spo_loss_LSE = spo_loss(best_B_LSE, x_test, c_test, self.oracle, z_star_test)
+        spo_loss_SPOplusLSE = spo_loss(best_B_SPOplus_LSE, x_test, c_test, self.oracle, z_star_test)
         least_square_loss_SPOplus = least_squares_loss(best_B_SPOplus, x_test, c_test)
         least_square_loss_LSE = least_squares_loss(best_B_LSE, x_test, c_test)
         least_square_loss_SPOplusLSE = least_squares_loss(best_B_SPOplus_LSE, x_test, c_test)
@@ -71,6 +73,6 @@ class SpReplication:
                        best_lambda_LSE, None, spo_loss_LSE, least_square_loss_LSE, cal_avg_gap_LSE,
                        cal_num_of_inf_or_unbd_LSE,
                        best_lambda_SPOplus_LSE, best_alpha_SPOplus_LSE, spo_loss_SPOplusLSE,
-                       least_square_loss_SPOplusLSE, cal_avg_gap_SPOplus_LSE, cal_num_of_inf_or_unbd_SPOplus_LSE]
+                       least_square_loss_SPOplusLSE, cal_avg_gap_SPOplus_LSE, cal_num_of_inf_or_unbd_SPOplus_LSE,z_star_sum_test]
 
         return results_tmp

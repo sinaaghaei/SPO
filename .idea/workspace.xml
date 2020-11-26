@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7610e154-c0b0-4008-b889-fc04c2a86ae9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/experiments/replications.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/replications.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiments/sp_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/sp_run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/SPO++.key" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/sp_example_graph.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/sp_example_results.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sp_results_100.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/sp_results_100.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/solver/sp_calibrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/solver/sp_calibrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp_example.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/sp_example.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/sp_plots.R" beforeDir="false" afterPath="$PROJECT_DIR$/plots/sp_plots.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sp_results_100_v1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sp_results_100_v1.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/sp_results_100_v2.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,20 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/experiments/sp_run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-100">
-              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -63,12 +48,13 @@
         <option value="$PROJECT_DIR$/utils/result_logger.py" />
         <option value="$PROJECT_DIR$/oracle/sp_oracle.py" />
         <option value="$PROJECT_DIR$/tests/test_sp_calibrator.py" />
-        <option value="$PROJECT_DIR$/experiments/replications.py" />
         <option value="$PROJECT_DIR$/solver/sp_reformulation.py" />
         <option value="$PROJECT_DIR$/utils/data_generator.py" />
         <option value="$PROJECT_DIR$/experiments/sp_example.py" />
         <option value="$PROJECT_DIR$/solver/sp_least_square.py" />
         <option value="$PROJECT_DIR$/solver/sp_calibrator.py" />
+        <option value="$PROJECT_DIR$/experiments/sp_run_zstar.py" />
+        <option value="$PROJECT_DIR$/experiments/replications.py" />
         <option value="$PROJECT_DIR$/experiments/sp_run.py" />
       </list>
     </option>
@@ -167,6 +153,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="sp_run_zstar" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DSO-SPO" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/experiments" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiments/sp_run_zstar.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests in test_sp_evaluation.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="DSO-SPO" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,21 +187,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_sp_evaluation.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests in test_sp_least_square.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="DSO-SPO" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_sp_least_square.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -233,16 +226,16 @@
       <item itemvalue="Python.sp_example" />
       <item itemvalue="Python tests.Unittests in test_sp_reformulation.py" />
       <item itemvalue="Python tests.Unittests in test_sp_evaluation.py" />
-      <item itemvalue="Python tests.Unittests in test_sp_least_square.py" />
       <item itemvalue="Python tests.pytest in test_sp_calibrator.py" />
+      <item itemvalue="Python.sp_run_zstar" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sp_run_zstar" />
         <item itemvalue="Python.sp_example" />
         <item itemvalue="Python tests.pytest in test_sp_calibrator.py" />
         <item itemvalue="Python tests.Unittests in test_sp_reformulation.py" />
         <item itemvalue="Python tests.Unittests in test_sp_evaluation.py" />
-        <item itemvalue="Python tests.Unittests in test_sp_least_square.py" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +251,7 @@
       <updated>1605675879142</updated>
       <workItem from="1605675880386" duration="91770000" />
       <workItem from="1606130481519" duration="41922000" />
-      <workItem from="1606309471480" duration="1872000" />
+      <workItem from="1606309471480" duration="9077000" />
     </task>
     <servers />
   </component>
@@ -295,18 +288,17 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135564000" />
+    <option name="totallyTimeSpent" value="142769000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2370317" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2370317" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946466" visible="true" weight="0.36744758" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.36744758" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39950678" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -337,6 +329,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DSO_SPO$run.coverage" NAME="sp_run Coverage Results" MODIFIED="1605863504001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments" />
+    <SUITE FILE_PATH="coverage/DSO_SPO$sp_run_zstar.coverage" NAME="sp_run_zstar Coverage Results" MODIFIED="1606379989153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments" />
     <SUITE FILE_PATH="coverage/DSO_SPO$sp_example.coverage" NAME="sp_example Coverage Results" MODIFIED="1606310952766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments" />
     <SUITE FILE_PATH="coverage/DSO_SPO$Unittests_in_test_sp_evaluation_py.coverage" NAME="Unittests in test_sp_evaluation.py Coverage Results" MODIFIED="1606156876604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/DSO_SPO$Unittests_in_test_sp_reformulation_py.coverage" NAME="Unittests in test_sp_reformulation.py Coverage Results" MODIFIED="1606160752517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -345,7 +338,7 @@
     <SUITE FILE_PATH="coverage/DSO_SPO$Unittests_in_test_sp_least_square_py.coverage" NAME="Unittests in test_sp_least_square.py Coverage Results" MODIFIED="1606130592530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/DSO_SPO$Unittests_in_test_sp_oracle_py.coverage" NAME="Unittests in test_sp_oracle.py Coverage Results" MODIFIED="1605916333756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/DSO_SPO$Unittests_in_test_data_generator_py.coverage" NAME="Unittests in test_data_generator.py Coverage Results" MODIFIED="1605913833869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/DSO_SPO$sp_run.coverage" NAME="sp_run Coverage Results" MODIFIED="1606311555744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments" />
+    <SUITE FILE_PATH="coverage/DSO_SPO$sp_run.coverage" NAME="sp_run Coverage Results" MODIFIED="1606381082690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/run.py" />
@@ -382,13 +375,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/logger.py" />
-    <entry file="file://$PROJECT_DIR$/oracle/sp_oracle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="20" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_sp_reformulation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
@@ -400,16 +386,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/result_logger.py" />
-    <entry file="file://$PROJECT_DIR$/tests/test_sp_evaluation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="51" column="70" lean-forward="true" selection-start-line="48" selection-start-column="12" selection-end-line="51" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_sp_calibrator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
@@ -420,13 +396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pandas/core/internals/construction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="566" selection-start-line="566" selection-end-line="566" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_sp_oracle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -434,21 +403,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiments/replications.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-282">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/sp_example.py" />
-    <entry file="file://$PROJECT_DIR$/utils/data_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-223">
-          <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solver/sp_least_square.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -456,22 +411,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solver/sp_evaluation.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solver/sp_calibrator.py">
+    <entry file="file://$PROJECT_DIR$/oracle/sp_oracle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2085">
-          <caret line="139" column="27" lean-forward="true" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
+        <state relative-caret-position="-625">
+          <caret selection-end-line="20" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pandas/core/internals/construction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="566" selection-start-line="566" selection-end-line="566" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/sp_run_zstar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding>
-            <element signature="e#428#476#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sp_evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="51" column="70" lean-forward="true" selection-start-line="48" selection-start-column="12" selection-end-line="51" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/solver/sp_reformulation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
+        <state relative-caret-position="1680">
           <caret line="129" column="82" selection-start-line="129" selection-start-column="82" selection-end-line="129" selection-end-column="82" />
           <folding>
             <element signature="e#741#763#0" expanded="true" />
@@ -479,10 +462,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solver/sp_calibrator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="139" column="27" lean-forward="true" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
+          <folding>
+            <element signature="e#428#476#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiments/replications.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="66" column="99" selection-start-line="66" selection-start-column="99" selection-end-line="66" selection-end-column="99" />
+          <folding>
+            <element signature="e#24#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solver/sp_evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/experiments/sp_run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="371">
+          <caret line="42" column="129" selection-start-line="42" selection-start-column="114" selection-end-line="42" selection-end-column="129" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
